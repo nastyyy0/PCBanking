@@ -27,8 +27,8 @@
 
 - C# / .NET Framework
 - WPF — графический интерфейс
-- SQL Server / SQLite — хранилище данных
-- OpenXML / Interop — экспорт в Word и Excel
+- SQL Server — хранилище данных
+- OpenXML — экспорт в Word и Excel
 - SMTP — отправка писем
 
 ## Структура проекта
