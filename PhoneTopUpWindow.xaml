@@ -1,0 +1,55 @@
+﻿<Window x:Class="WpfApp1.PhoneTopUpWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Style="{StaticResource {x:Type Window}}"
+        Title="Пополнение баланса телефона"
+        Height="290" Width="280"
+        MaxWidth="280" MaxHeight="290"
+        SizeToContent="Manual"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Background="{x:Null}">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" >
+
+            <!-- Заголовок -->
+            <TextBlock x:Name="NameTextBlock"
+                       Text=""
+                       FontSize="30"
+                       Foreground="White"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,20"/>
+
+            <!-- Номер телефона -->
+            <Grid Margin="0,0,0,10">
+                <TextBox x:Name="PhoneNumberTextBox" Width="250" Height="25"
+                         PreviewTextInput="PhoneNumberTextBox_PreviewTextInput"/>
+                <TextBlock x:Name="PhoneNumberTextBlock" Text="Номер телефона"
+                           Foreground="Gray" IsHitTestVisible="False"
+                           VerticalAlignment="Center" Margin="10,0,0,0"/>
+            </Grid>
+
+            <!-- Сумма пополнения -->
+            <Grid Margin="0,0,0,5">
+                <TextBox x:Name="AmountTextBox" Width="250" Height="25"
+                         PreviewTextInput="AmountTextBox_PreviewTextInput"/>
+                <TextBlock x:Name="AmountTextBlock" Text="Сумма пополнения"
+                           Foreground="Gray" IsHitTestVisible="False"
+                           VerticalAlignment="Center" Margin="10,0,0,0"/>
+            </Grid>
+
+            <!-- Выбор карты -->
+            <StackPanel Orientation="Vertical" Margin="0,0,0,20">
+                <TextBlock Text="Карта:" FontWeight="Bold" Foreground="Gray" Margin="0,0,0,5"/>
+                <ComboBox x:Name="CardComboBox" DisplayMemberPath="DisplayText" SelectedValuePath="CardsID"
+                          Width="250" Height="30"/>
+            </StackPanel>
+
+            <!-- Кнопки -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Отмена" Width="80" Margin="0,0,10,0" Click="CancelButton_Click"/>
+                <Button Content="Пополнить" Width="100" Click="TopUpButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

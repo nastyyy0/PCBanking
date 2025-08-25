@@ -1,0 +1,51 @@
+﻿<Window x:Class="WpfApp1.HistoryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        Style="{StaticResource {x:Type Window}}"
+        mc:Ignorable="d"
+        Title="История операций" Height="450" Width="750">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="История операций" FontSize="30"
+                    Foreground="White" 
+                    FontWeight="Bold"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Margin="15"/>
+
+        <ListView x:Name="HistoryListView"
+          Grid.Row="1"
+          BorderThickness="0"
+          Background="Transparent"
+          Foreground="Black"
+          FontSize="16"
+          MouseDoubleClick="HistoryListView_MouseDoubleClick">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Имя карты" Width="150" DisplayMemberBinding="{Binding CardName}" />
+                    <GridViewColumn Header="Вид операции" Width="250" DisplayMemberBinding="{Binding TransactionType}" />
+                    <GridViewColumn Header="Сумма (BYN)" Width="100" DisplayMemberBinding="{Binding Amount}" />
+                    <GridViewColumn Header="Дата" Width="105" DisplayMemberBinding="{Binding TransactionDate, StringFormat={}{0:dd.MM.yyyy HH:mm}}" />
+                    <GridViewColumn Header="Статус" Width="120" DisplayMemberBinding="{Binding Status}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        
+        <Button Content="Экспорт в Excel"
+            Grid.Row="3"
+            Width="200" 
+            Height="40"
+            Click="ExportToExcel_Click"/>
+
+        <TextBox x:Name="Search_txb" Width="250" Height="25" Grid.Row="2" TextChanged="Search_txb_TextChanged"/>
+    </Grid>
+</Window>

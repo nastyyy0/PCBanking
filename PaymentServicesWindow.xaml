@@ -1,0 +1,62 @@
+﻿<Window x:Class="WpfApp1.PaymentServicesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Style="{StaticResource {x:Type Window}}"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title=""
+        Height="290" Width="280"
+        MaxWidth="280" MaxHeight="290"
+        SizeToContent="Manual"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Background="{x:Null}">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="250" >
+
+        <!-- Заголовок -->
+        <TextBlock x:Name="NameTextBlock"
+                       Text=""
+                       FontSize="30"
+                       Foreground="White"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,20"/>
+
+        <!-- Номер договора -->
+        <Grid Margin="0,0,0,10">
+            <TextBox x:Name="ContractNumberTextBox" Width="250" Height="25"
+                     GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"
+                     PreviewTextInput="ContractNumberTextBox_PreviewTextInput"
+                     MaxLength="13"/>
+            <TextBlock x:Name="ContractNumberTextBlock" Text="Номер договора"
+                           Foreground="Gray" IsHitTestVisible="False"
+                           VerticalAlignment="Center" Margin="10,0,0,0"/>
+        </Grid>
+
+        <!-- Сумма -->
+        <Grid Margin="0,0,0,5">
+            <TextBox x:Name="AmountTextBox" Width="250" Height="25"
+                     GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"
+                     PreviewTextInput="AmountTextBox_PreviewTextInput"/>
+            <TextBlock x:Name="AmountTextBlock" Text="Сумма оплаты"
+                           Foreground="Gray" IsHitTestVisible="False"
+                           VerticalAlignment="Center" Margin="10,0,0,0"/>
+        </Grid>
+
+        <!-- Выбор карты -->
+        <StackPanel Orientation="Vertical" Margin="0,0,0,20">
+            <TextBlock Text="Карта:" FontWeight="Bold" Foreground="Gray" Margin="0,0,0,5"/>
+            <ComboBox x:Name="CardComboBox" DisplayMemberPath="CardName" SelectedValuePath="CardsID"
+                      Width="250" Height="30"/>
+        </StackPanel>
+
+        <!-- Кнопки -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Отмена" Width="80" Margin="0,0,10,0" Click="CancelButton_Click"/>
+            <Button Content="Оплатить" Width="100"  Click="TopUpButton_Click"/>
+        </StackPanel>
+    </StackPanel>
+</Grid>
+</Window>

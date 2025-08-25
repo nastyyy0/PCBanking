@@ -1,0 +1,29 @@
+﻿<Window x:Class="WpfApp1.OperationsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Style="{StaticResource {x:Type Window}}"
+        Title="Операции" Height="420" Width="200">
+    
+    <Grid Background="{x:Null}">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Height="400" Width="180">
+            
+            <TextBlock Text="Операции" 
+            FontSize="30"
+            Foreground="White" 
+            FontWeight="Bold"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Margin="5"/>
+
+            <Button Content="Перевод с карты" Click="CardToCard_Click" Margin="5"/>
+            <Button Content="А1" Click="A1_Click" Margin="5"/>
+            <Button Content="МТС" Click="MTS_Click" Margin="5"/>
+            <Button Content="life:)" Click="Life_Click" Margin="5"/>
+            <Button Content="Byfly" Click="Byfly_Click" Margin="5"/>
+            <Button Content="Белтелеком" Click="Beltelecom_Click" Margin="5"/>
+            <Button Content="Пополнение баланса" Click="UpdateBalanceCard_Click" Margin="5"/>
+            <ComboBox x:Name="TopUpCardComboBox" DisplayMemberPath="CardName" SelectedValuePath="CardsID" Margin="5,0,5,0"/>
+            <Button Content="Заказ карты" Click="PayCard_Click" Margin="5"/>
+        </StackPanel>
+    </Grid>
+</Window>

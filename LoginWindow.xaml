@@ -1,0 +1,83 @@
+﻿<Window x:Class="WpfApp1.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Style="{StaticResource {x:Type Window}}"
+        Title="Вход" Height="275" Width="350">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <TextBlock Text="Вход" FontSize="30"
+                   Foreground="White" 
+                   FontWeight="Bold"
+                   Margin="10"
+                   HorizontalAlignment="Center"
+                   Grid.Row="0"/>
+
+        <!-- Переключение способов -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+            <RadioButton x:Name="PasswordLoginRadio" Content="Пароль" Margin="5" Checked="Radio_Checked" IsChecked="True"/>
+            <RadioButton x:Name="CodeLoginRadio" Content="Код" Margin="5" Checked="Radio_Checked"/>
+        </StackPanel>
+
+        <!-- Email -->
+        <Grid Grid.Row="2" Margin="0,0,0,10">
+            <TextBox x:Name="EmailTextBox" Width="150" Height="25"
+             GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"
+             TextChanged="EmailTextBox_TextChanged"/>
+            <TextBlock x:Name="EmailHint" Text="Электронная почта" Foreground="Gray"
+               IsHitTestVisible="False" Margin="110,0,100,0"
+               VerticalAlignment="Center" />
+        </Grid>
+
+        <!-- Кнопка отправки кода — размещена выше других элементов -->
+        <Button x:Name="SendCodeButton" Content="Код"
+        Grid.Row="2" Width="50" Height="25" HorizontalAlignment="Center"
+        Margin="220,-10,0,0"
+        Click="SendCodeButton_Click" Visibility="Collapsed"/>
+
+
+        <!-- Пароль -->
+        <Grid x:Name="PasswordGrid" Grid.Row="4" Margin="0,0,0,10">
+            <TextBox x:Name="PasswordTextBox" Width="150" Height="25"
+                     GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"
+                     PreviewTextInput="PasswordTextBox_PreviewTextInput"
+                     PreviewKeyDown="PasswordTextBox_PreviewKeyDown"
+                     TextChanged="InputStarted"/>
+            <TextBlock x:Name="PasswordHint" Text="Пароль от приложения" Foreground="Gray"
+                       IsHitTestVisible="False" Margin="110,0,100,0"
+                       VerticalAlignment="Center" />
+        </Grid>
+
+        <!-- Код -->
+        <Grid x:Name="CodeGrid" Grid.Row="5" Margin="0,0,0,10" Visibility="Collapsed">
+            <TextBox x:Name="CodeTextBox" Width="150" Height="25"
+                     GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"
+                     TextChanged="InputStarted"/>
+            <TextBlock x:Name="CodeHint" Text="Код из письма" Foreground="Gray"
+                       IsHitTestVisible="False" Margin="110,0,0,0"
+                       VerticalAlignment="Center" />
+        </Grid>
+
+        <!-- Кнопка входа -->
+        <Button x:Name="LoginButton" Content="Войти"
+                Grid.Row="6" Width="150" Height="30" VerticalAlignment="Top" HorizontalAlignment="Center" Click="LoginButton_Click"/>
+
+        <!-- Ссылка на регистрацию -->
+        <TextBlock Grid.Row="7" HorizontalAlignment="Center" Margin="0,40,0,0" FontSize="12" TextAlignment="Center">
+            <Hyperlink Click="RegisterHyperlink_Click" Foreground="Blue" Cursor="Hand" TextDecorations="Underline">
+                Пользуешься YAbank впервые?
+                <LineBreak/>
+                Зарегистрироваться
+            </Hyperlink>
+        </TextBlock>
+    </Grid>
+</Window>
